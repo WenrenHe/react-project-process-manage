@@ -1,5 +1,5 @@
-import type { CSSObject } from '@emotion/react';
-import type { GlobalToken } from 'antd/es/theme/interface';
+import type { CSSObject } from '@emotion/react'
+import type { GlobalToken } from 'antd/es/theme/interface'
 
 export const getSidebarMode = (token: GlobalToken): CSSObject => {
   return {
@@ -70,5 +70,5 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
         border: `2px solid ${token.colorPrimary}`,
       },
     },
-  };
-};
+  }
+}

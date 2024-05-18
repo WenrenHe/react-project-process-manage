@@ -1,7 +1,7 @@
-import { memo } from 'react';
-import type { AreaConfig } from '@ant-design/charts';
-import { Area } from '@ant-design/charts';
-import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
+import { memo } from 'react'
+import type { AreaConfig } from '@ant-design/charts'
+import { Area } from '@ant-design/charts'
+import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig'
 
 const data = [
   {
@@ -109,10 +109,10 @@ const data = [
     value: 10,
     category: '任务',
   },
-];
+]
 
 const AreaChart = memo(() => {
-  const { theme } = useChartsConfig();
+  const { theme } = useChartsConfig()
   const config: AreaConfig = {
     data,
     theme,
@@ -150,9 +150,9 @@ const AreaChart = memo(() => {
         },
       },
     },
-  };
+  }
 
-  return <Area {...config} />;
-});
+  return <Area {...config} />
+})
 
-export default AreaChart;
+export default AreaChart

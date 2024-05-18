@@ -1,69 +1,69 @@
-import type { MenuProps, SiderProps } from 'antd';
-import { theme, Drawer, Layout, Menu } from 'antd';
-import { memo, useEffect, useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useResponsive } from 'ahooks';
-import { shallowEqual } from 'react-redux';
-import AppLogo from '../../AppLogo';
-import './index.less';
-import { useMenuList } from '../hooks/useMenuList';
-import { findRouteByPath, getParentPaths } from '@/router/utils';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppCollapsed } from '@/store/modules/app';
+import type { MenuProps, SiderProps } from 'antd'
+import { theme, Drawer, Layout, Menu } from 'antd'
+import { memo, useEffect, useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useResponsive } from 'ahooks'
+import { shallowEqual } from 'react-redux'
+import AppLogo from '../../AppLogo'
+import './index.less'
+import { useMenuList } from '../hooks/useMenuList'
+import { findRouteByPath, getParentPaths } from '@/router/utils'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { setAppCollapsed } from '@/store/modules/app'
 
-const { Sider } = Layout;
+const { Sider } = Layout
 
 const Sidebar = memo(() => {
-  const { pathname } = useLocation();
-  const dispatch = useAppDispatch();
+  const { pathname } = useLocation()
+  const dispatch = useAppDispatch()
   const { collapsed, sidebarMode } = useAppSelector(
-    (state) => ({
+    state => ({
       collapsed: state.app.collapsed,
       sidebarMode: state.app.sidebarMode,
     }),
     shallowEqual,
-  );
-  const [openKeys, setOpenKeys] = useState<string[]>([]);
-  const thme = theme.useToken();
-  console.log(thme);
-  const responsive = useResponsive();
-  const navigate = useNavigate();
-  const { menuList } = useMenuList();
+  )
+  const [openKeys, setOpenKeys] = useState<string[]>([])
+  const thme = theme.useToken()
+  console.log(thme)
+  const responsive = useResponsive()
+  const navigate = useNavigate()
+  const { menuList } = useMenuList()
 
   useEffect(() => {
     if (!collapsed) {
-      setOpenKeys(getParentPaths(pathname, menuList));
+      setOpenKeys(getParentPaths(pathname, menuList))
     } else {
-      setOpenKeys([]);
+      setOpenKeys([])
     }
-  }, [collapsed, pathname]);
+  }, [collapsed, pathname])
 
-  const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
-    setOpenKeys(keys);
-  };
+  const onOpenChange: MenuProps['onOpenChange'] = keys => {
+    setOpenKeys(keys)
+  }
 
-  const onBreakpoint: SiderProps['onBreakpoint'] = (broken) => {
-    let collapsedValue = collapsed;
-    if (broken) collapsedValue = true;
-    else collapsedValue = false;
-    dispatch(setAppCollapsed(collapsedValue));
-  };
+  const onBreakpoint: SiderProps['onBreakpoint'] = broken => {
+    let collapsedValue = collapsed
+    if (broken) collapsedValue = true
+    else collapsedValue = false
+    dispatch(setAppCollapsed(collapsedValue))
+  }
 
   const menuItems = useMemo(() => {
     if (sidebarMode === 'blend') {
       // path的父级路由组成的数组
-      const parentPathArr = getParentPaths(pathname, menuList);
+      const parentPathArr = getParentPaths(pathname, menuList)
       // 当前路由的信息
-      const parenetRoute = findRouteByPath(parentPathArr[0], menuList);
+      const parenetRoute = findRouteByPath(parentPathArr[0], menuList)
       if (parenetRoute) {
-        if (parenetRoute.children) return parenetRoute.children;
-        else return [parenetRoute];
+        if (parenetRoute.children) return parenetRoute.children
+        else return [parenetRoute]
       }
-      return [];
+      return []
     } else {
-      return menuList;
+      return menuList
     }
-  }, [sidebarMode, pathname, menuList]);
+  }, [sidebarMode, pathname, menuList])
 
   const MenuRender = (
     <>
@@ -74,11 +74,11 @@ const Sidebar = memo(() => {
         onOpenChange={onOpenChange}
         selectedKeys={[pathname]}
         items={menuItems as MenuProps['items']}
-        onClick={(e) => navigate(e.key)}
+        onClick={e => navigate(e.key)}
         style={{ border: 'none' }}
       />
     </>
-  );
+  )
 
   return (
     <>
@@ -117,7 +117,7 @@ const Sidebar = memo(() => {
         </>
       )}
     </>
-  );
-});
+  )
+})
 
-export default Sidebar;
+export default Sidebar

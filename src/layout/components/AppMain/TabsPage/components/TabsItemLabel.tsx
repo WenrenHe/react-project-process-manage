@@ -1,48 +1,48 @@
-import type { MenuProps } from 'antd';
-import { Dropdown } from 'antd';
-import { useState, useMemo } from 'react';
-import type { CSSProperties, ReactNode } from 'react';
-import type { Interpolation, Theme } from '@emotion/react';
-import type { RightClickTags } from '../hooks/useTabsState';
-import { useTabsState } from '../hooks/useTabsState';
-import { useTabsChange } from '../hooks/useTabsChange';
+import type { MenuProps } from 'antd'
+import { Dropdown } from 'antd'
+import { useState, useMemo } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import type { Interpolation, Theme } from '@emotion/react'
+import type { RightClickTags } from '../hooks/useTabsState'
+import { useTabsState } from '../hooks/useTabsState'
+import { useTabsChange } from '../hooks/useTabsChange'
 
 interface TabsItemLabelProps {
-  pathKey: string;
-  children: ReactNode;
-  eventType?: 'click' | 'ContextMenu';
-  className?: string;
-  style?: CSSProperties;
-  css?: Interpolation<Theme>;
+  pathKey: string
+  children: ReactNode
+  eventType?: 'click' | 'ContextMenu'
+  className?: string
+  style?: CSSProperties
+  css?: Interpolation<Theme>
 }
 
 const TabsItemLabel = (props: TabsItemLabelProps) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const { menuItems } = useTabsState(props.pathKey, open);
-  const { onTabsDropdownChange } = useTabsChange();
+  const [open, setOpen] = useState<boolean>(false)
+  const { menuItems } = useTabsState(props.pathKey, open)
+  const { onTabsDropdownChange } = useTabsChange()
 
-  const menuClick: MenuProps['onClick'] = (e) => {
-    e.domEvent.stopPropagation();
-    onTabsDropdownChange(e.key as RightClickTags['code'], props.pathKey);
-  };
+  const menuClick: MenuProps['onClick'] = e => {
+    e.domEvent.stopPropagation()
+    onTabsDropdownChange(e.key as RightClickTags['code'], props.pathKey)
+  }
 
   const contentProps: React.DOMAttributes<HTMLDivElement> = useMemo(() => {
     if (props.eventType === 'click') {
       return {
-        onClick: (e) => {
-          e.preventDefault();
-          setOpen(!open);
+        onClick: e => {
+          e.preventDefault()
+          setOpen(!open)
         },
-      };
+      }
     } else {
       return {
-        onContextMenu: (e) => {
-          e.preventDefault();
-          setOpen(!open);
+        onContextMenu: e => {
+          e.preventDefault()
+          setOpen(!open)
         },
-      };
+      }
     }
-  }, [props.eventType]);
+  }, [props.eventType])
 
   return (
     <Dropdown
@@ -51,13 +51,13 @@ const TabsItemLabel = (props: TabsItemLabelProps) => {
         items: menuItems,
         onClick: menuClick,
       }}
-      onOpenChange={(visible) => !visible && setOpen(visible)}
+      onOpenChange={visible => !visible && setOpen(visible)}
     >
       <div className={props.className} style={props.style} {...contentProps} css={props.css}>
         {props.children}
       </div>
     </Dropdown>
-  );
-};
+  )
+}
 
-export default TabsItemLabel;
+export default TabsItemLabel

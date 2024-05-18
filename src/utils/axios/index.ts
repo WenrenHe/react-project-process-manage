@@ -1,9 +1,9 @@
-import { isString } from 'lodash-es';
-import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
-import { iAxios } from './iAxios';
-import { checkStatus } from './axiosStatus';
-import { errorData } from './errorConfig';
-import { createErrorModal, createErrorMsg } from '@/hooks/web/useMessage';
+import { isString } from 'lodash-es'
+import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig'
+import { iAxios } from './iAxios'
+import { checkStatus } from './axiosStatus'
+import { errorData } from './errorConfig'
+import { createErrorModal, createErrorMsg } from '@/hooks/web/useMessage'
 
 /**
  * @description:一下所有拦截器请根据自身使用场景更改
@@ -17,85 +17,84 @@ const interceptor: AxiosInterceptor = {
      * 此处方法是对请求回来的数据进行处理，
      * 根据自己的使用场景更改
      */
-    const { data } = res;
-    const { errorMessageMode } = options;
+    const { data } = res
+    const { errorMessageMode } = options
     if (data) {
       if (data.code === -1) {
         if (errorMessageMode === 'modal') {
-          createErrorModal(data.message);
+          createErrorModal(data.message)
         } else if (errorMessageMode === 'message') {
-          createErrorMsg(data.message);
+          createErrorMsg(data.message)
         }
-        return errorData(res);
+        return errorData(res)
       } else {
-        const { code, data: dataInfo, message } = data;
+        const { code, data: dataInfo, message } = data
         if (!code && !dataInfo && !message) {
           const toData = {
             code: 1,
             data: data,
             message: 'ok',
-          };
-          return toData;
+          }
+          return toData
         }
       }
     }
-    return data;
+    return data
   },
 
   /**
    * @description: 请求失败的错误处理
    */
   requestCatchHook: (e, _options) => {
-    return Promise.reject(e);
+    return Promise.reject(e)
   },
 
   /**
    * @description: 请求之前处理config
    */
   beforeRequestHook: (config, options) => {
-    const { urlPrefix } = options;
-    if (urlPrefix && isString(urlPrefix)) config.url = `${urlPrefix}${config.url}`;
-    return config;
+    const { urlPrefix } = options
+    if (urlPrefix && isString(urlPrefix)) config.url = `${urlPrefix}${config.url}`
+    return config
   },
 
   /**
    * @description: 请求拦截器处理
    */
-  requestInterceptors: (config) => {
-    const { requestOptions } = config;
+  requestInterceptors: config => {
+    const { requestOptions } = config
     if (requestOptions?.withToken) {
-      (config as Recordable).headers._token = 'myToken';
-      if (requestOptions?.specialToken)
-        (config as Recordable).headers._token = requestOptions?.specialToken;
+      ;(config as Recordable).headers._token = 'myToken'
+      if (requestOptions?.specialToken) (config as Recordable).headers._token = requestOptions?.specialToken
     }
 
-    return config;
+    return config
   },
 
   /**
    * @description: 请求拦截器错误处理
    */
-  requestInterceptorsCatch: (error) => {
-    return error;
+  requestInterceptorsCatch: error => {
+    return error
   },
 
   /**
    * @description: 响应拦截器处理
    */
-  responseInterceptors: (res) => {
-    return res;
+  responseInterceptors: res => {
+    return res
   },
 
   /**
    * @description: 响应拦截器错误处理
    */
   responseInterceptorsCatch: (error: any) => {
-    const { response, message, config } = error || {};
-    const errorMessageMode = config.requestOptions.errorMessageMode || 'none';
-    checkStatus(response ? response.status : 404, message, errorMessageMode);
-    return error;
+    const { response, message, config } = error || {}
+    const errorMessageMode = config.requestOptions.errorMessageMode || 'none'
+    checkStatus(response ? response.status : 404, message, errorMessageMode)
+    return error
   },
-};
+}
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new iAxios({
@@ -113,6 +112,6 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
       },
     },
     ...(opt || {}),
-  });
+  })
 }
-export const deffHttp = createAxios();
+export const deffHttp = createAxios()

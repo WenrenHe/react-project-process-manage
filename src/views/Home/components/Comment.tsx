@@ -1,9 +1,9 @@
-import { memo } from 'react';
-import { Avatar, Divider, theme } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import type { CSSObject } from '@emotion/react';
-import type { GlobalToken } from 'antd/es/theme/interface';
-import avatar from '@/assets/avatar.png';
+import { memo } from 'react'
+import { Avatar, Divider, theme } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
+import type { CSSObject } from '@emotion/react'
+import type { GlobalToken } from 'antd/es/theme/interface'
+import avatar from '@/assets/avatar.png'
 
 const getCommentItem = (token: GlobalToken): CSSObject => {
   return {
@@ -31,16 +31,16 @@ const getCommentItem = (token: GlobalToken): CSSObject => {
         },
       },
     },
-  };
-};
+  }
+}
 
 const Comment = memo(() => {
-  const thme = theme.useToken();
+  const thme = theme.useToken()
 
   return (
     <div css={getCommentItem(thme.token)}>
       <ul>
-        {[1, 2, 3, 4].map((i) => {
+        {[1, 2, 3, 4].map(i => {
           return (
             <li key={i}>
               <div className="item">
@@ -55,11 +55,11 @@ const Comment = memo(() => {
               </div>
               <Divider />
             </li>
-          );
+          )
         })}
       </ul>
     </div>
-  );
-});
+  )
+})
 
-export default Comment;
+export default Comment

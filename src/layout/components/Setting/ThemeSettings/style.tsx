@@ -1,6 +1,6 @@
-import type { CSSObject } from '@emotion/react';
-import type { GlobalToken } from 'antd/es/theme/interface';
-import styled from '@emotion/styled';
+import type { CSSObject } from '@emotion/react'
+import type { GlobalToken } from 'antd/es/theme/interface'
+import styled from '@emotion/styled'
 
 const getColorListStyle = (): CSSObject => {
   return {
@@ -16,8 +16,8 @@ const getColorListStyle = (): CSSObject => {
         justifyContent: 'space-between',
       },
     },
-  };
-};
+  }
+}
 
 const getOptions = (token: GlobalToken): CSSObject => {
   return {
@@ -27,16 +27,16 @@ const getOptions = (token: GlobalToken): CSSObject => {
       alignItems: 'center',
       justifyContent: 'space-between',
     },
-  };
-};
+  }
+}
 
 const getThemeSettingsStyle = (token: GlobalToken) => {
   const ThemeSettingsDiv = styled.div`
     ${getColorListStyle()}
     ${getOptions(token)}
-  `;
+  `
 
-  return { ThemeSettingsDiv };
-};
+  return { ThemeSettingsDiv }
+}
 
-export { getThemeSettingsStyle };
+export { getThemeSettingsStyle }

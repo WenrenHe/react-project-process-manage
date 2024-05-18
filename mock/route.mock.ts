@@ -1,4 +1,4 @@
-import { defineFakeRoute } from 'vite-plugin-fake-server/client';
+import { defineFakeRoute } from 'vite-plugin-fake-server/client'
 
 const power = [
   {
@@ -25,7 +25,7 @@ const power = [
       },
     ],
   },
-];
+]
 
 const adminRoute = [
   {
@@ -42,7 +42,7 @@ const adminRoute = [
       },
     ],
   },
-];
+]
 
 const testRoute = [
   {
@@ -59,7 +59,7 @@ const testRoute = [
       },
     ],
   },
-];
+]
 
 export default defineFakeRoute([
   {
@@ -67,26 +67,26 @@ export default defineFakeRoute([
     timeout: 500,
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
-      const { name } = body;
+      const { name } = body
       if (name == 'admin') {
         return {
           data: [...power, ...adminRoute],
           code: 1,
           message: 'ok',
-        };
+        }
       } else if (name == 'test') {
         return {
           data: [...power, ...testRoute],
           code: 1,
           message: 'ok',
-        };
+        }
       } else {
         return {
           data: [],
           code: -1,
           message: '账号错误',
-        };
+        }
       }
     },
   },
-]);
+])

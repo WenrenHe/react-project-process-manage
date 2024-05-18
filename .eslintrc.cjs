@@ -19,4 +19,4 @@ module.exports = {
     // 禁止使用未知的dom属性
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
-};
+}

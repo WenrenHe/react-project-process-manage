@@ -1,3 +1,3 @@
 export default () => {
-  return <div>menu1-2</div>;
-};
+  return <div>menu1-2</div>
+}

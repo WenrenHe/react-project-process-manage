@@ -1,14 +1,14 @@
-import { useMemo, useState } from 'react';
-import { useAppSelector } from '@/store/hooks';
+import { useMemo, useState } from 'react'
+import { useAppSelector } from '@/store/hooks'
 
 export interface RightClickTags {
-  text: string;
-  disabled: boolean;
-  code: 'refresh' | 'close' | 'closeOther' | 'closeLeftOther' | 'closeRightOther';
+  text: string
+  disabled: boolean
+  code: 'refresh' | 'close' | 'closeOther' | 'closeLeftOther' | 'closeRightOther'
 }
 
 export const useTabsState = (pathKey: string, openDropdown: boolean) => {
-  const multiTabs = useAppSelector((state) => state.route.multiTabs);
+  const multiTabs = useAppSelector(state => state.route.multiTabs)
 
   const [rightClickTags] = useState<RightClickTags[]>([
     {
@@ -36,41 +36,41 @@ export const useTabsState = (pathKey: string, openDropdown: boolean) => {
       disabled: false,
       code: 'closeRightOther',
     },
-  ]);
+  ])
 
   const getDisabledStatus = (code: string, multFindIndex: number, multlength: number) => {
-    const isFirstTab = multFindIndex === 0 && multlength > 1;
-    const isLastTab = multFindIndex === multlength - 1 && multlength > 1;
-    const isOnlyTab = multlength === 1;
+    const isFirstTab = multFindIndex === 0 && multlength > 1
+    const isLastTab = multFindIndex === multlength - 1 && multlength > 1
+    const isOnlyTab = multlength === 1
 
-    const disableCodesForOnlyTab = ['close', 'closeOther', 'closeLeftOther', 'closeRightOther'];
+    const disableCodesForOnlyTab = ['close', 'closeOther', 'closeLeftOther', 'closeRightOther']
 
-    if (isFirstTab && code === 'closeLeftOther') return true;
-    if (isLastTab && code === 'closeRightOther') return true;
-    if (isOnlyTab && disableCodesForOnlyTab.includes(code)) return true;
+    if (isFirstTab && code === 'closeLeftOther') return true
+    if (isLastTab && code === 'closeRightOther') return true
+    if (isOnlyTab && disableCodesForOnlyTab.includes(code)) return true
 
-    return false;
-  };
+    return false
+  }
 
   const rightClickTagsList = useMemo(() => {
-    const multFindIndex = multiTabs.findIndex((i) => i.key === pathKey);
-    const multlength = multiTabs.length;
+    const multFindIndex = multiTabs.findIndex(i => i.key === pathKey)
+    const multlength = multiTabs.length
 
-    return rightClickTags.map((item) => ({
+    return rightClickTags.map(item => ({
       ...item,
       disabled: getDisabledStatus(item.code, multFindIndex, multlength),
-    }));
-  }, [openDropdown]);
+    }))
+  }, [openDropdown])
 
   const menuItems = useMemo(() => {
-    return rightClickTagsList.map((i) => {
+    return rightClickTagsList.map(i => {
       return {
         label: i.text,
         key: i.code,
         disabled: i.disabled,
-      };
-    });
-  }, [rightClickTagsList]);
+      }
+    })
+  }, [rightClickTagsList])
 
-  return { menuItems, rightClickTagsList };
-};
+  return { menuItems, rightClickTagsList }
+}

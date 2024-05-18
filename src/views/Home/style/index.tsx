@@ -1,5 +1,5 @@
-import type { CSSObject } from '@emotion/react';
-import type { GlobalToken } from 'antd/es/theme/interface';
+import type { CSSObject } from '@emotion/react'
+import type { GlobalToken } from 'antd/es/theme/interface'
 
 export const getNumericalValue = (token: GlobalToken): CSSObject => {
   return {
@@ -14,5 +14,5 @@ export const getNumericalValue = (token: GlobalToken): CSSObject => {
         fontWeight: 600,
       },
     },
-  };
-};
+  }
+}

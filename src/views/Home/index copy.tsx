@@ -1,10 +1,10 @@
-import { memo, useState } from 'react';
-import { Button } from 'antd';
-import reactLogo from '@/assets/react.svg';
-import './index.less';
+import { memo, useState } from 'react'
+import { Button } from 'antd'
+import reactLogo from '@/assets/react.svg'
+import './index.less'
 
 const Home = memo(() => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <div className="home">
@@ -19,7 +19,7 @@ const Home = memo(() => {
         </div>
         <h1>Vite + React</h1>
         <div className="card">
-          <Button type="primary" onClick={() => setCount((count) => count + 1)}>
+          <Button type="primary" onClick={() => setCount(count => count + 1)}>
             count is {count}
           </Button>
           <p>
@@ -29,7 +29,7 @@ const Home = memo(() => {
         <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       </div>
     </div>
-  );
-});
+  )
+})
 
-export default Home;
+export default Home

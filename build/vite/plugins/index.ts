@@ -1,13 +1,13 @@
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react'
 // import react from '@vitejs/plugin-react-swc';
-import type { ConfigEnv, PluginOption } from 'vite';
-import { configMockPlugin } from './mock';
+import type { ConfigEnv, PluginOption } from 'vite'
+import { configMockPlugin } from './mock'
 
 // svg配置
-import { configSvgPlugin } from './svg';
+import { configSvgPlugin } from './svg'
 
 export function createVitePlugins(_isBuild = false, _configEnv: ConfigEnv) {
-  const vitePlugins: PluginOption[] = [];
+  const vitePlugins: PluginOption[] = []
 
   vitePlugins.push(
     react({
@@ -16,11 +16,11 @@ export function createVitePlugins(_isBuild = false, _configEnv: ConfigEnv) {
         plugins: ['@emotion/babel-plugin'],
       },
     }),
-  );
+  )
 
-  vitePlugins.push(configSvgPlugin());
+  vitePlugins.push(configSvgPlugin())
 
-  vitePlugins.push(configMockPlugin());
+  vitePlugins.push(configMockPlugin())
 
-  return vitePlugins;
+  return vitePlugins
 }

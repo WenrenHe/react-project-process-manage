@@ -1,4 +1,4 @@
-import type { BuildOptions } from 'vite';
+import type { BuildOptions } from 'vite'
 
 export function createViteBuild(): BuildOptions {
   const viteBuild = {
@@ -24,6 +24,6 @@ export function createViteBuild(): BuildOptions {
     // },
     // chunk 大小警告的限制（以 kbs 为单位）
     chunkSizeWarningLimit: 2000,
-  };
-  return viteBuild;
+  }
+  return viteBuild
 }

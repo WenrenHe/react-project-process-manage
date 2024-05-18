@@ -1,15 +1,15 @@
-import { memo } from 'react';
-import { Card, Col, Progress, Row, theme } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
-import './index.less';
-import { getNumericalValue } from './style';
-import AreaChart from './components/AreaChart';
-import RoseChart from './components/RoseChart';
-import Comment from './components/Comment';
-import WordCloudChart from './components/WordCloudChart';
+import { memo } from 'react'
+import { Card, Col, Progress, Row, theme } from 'antd'
+import { RightOutlined } from '@ant-design/icons'
+import './index.less'
+import { getNumericalValue } from './style'
+import AreaChart from './components/AreaChart'
+import RoseChart from './components/RoseChart'
+import Comment from './components/Comment'
+import WordCloudChart from './components/WordCloudChart'
 
 const Home = memo(() => {
-  const thme = theme.useToken();
+  const thme = theme.useToken()
 
   const speedList = [
     {
@@ -32,16 +32,16 @@ const Home = memo(() => {
       online: 10,
       total: 40,
     },
-  ];
+  ]
 
   const value = (online: number, total: number) => {
-    return Math.round((online / total) * 100);
-  };
+    return Math.round((online / total) * 100)
+  }
 
   return (
     <div className="">
       <Row gutter={[12, 12]}>
-        {speedList.map((i) => {
+        {speedList.map(i => {
           return (
             <Col lg={6} sm={24} xs={24} key={i.title}>
               <Card size="small" title={i.title} extra={<RightOutlined />}>
@@ -60,7 +60,7 @@ const Home = memo(() => {
                 </div>
               </Card>
             </Col>
-          );
+          )
         })}
 
         <Col lg={18} sm={24} xs={24}>
@@ -85,7 +85,7 @@ const Home = memo(() => {
         </Col>
       </Row>
     </div>
-  );
-});
+  )
+})
 
-export default Home;
+export default Home

@@ -1,12 +1,12 @@
-import { Button, Result } from 'antd';
-import { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLocale } from '@/locales';
+import { Button, Result } from 'antd'
+import { memo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useLocale } from '@/locales'
 
 export default memo(() => {
-  const init = useLocale();
+  const init = useLocale()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <Result
@@ -17,12 +17,12 @@ export default memo(() => {
         <Button
           type="primary"
           onClick={() => {
-            navigate('/');
+            navigate('/')
           }}
         >
           Back Home
         </Button>
       }
     />
-  );
-});
+  )
+})

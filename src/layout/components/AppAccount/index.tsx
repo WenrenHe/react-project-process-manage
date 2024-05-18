@@ -1,32 +1,32 @@
-import type { MenuProps } from 'antd';
-import { Dropdown, Image } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { getAccountStyle } from './style';
-import avatar from '@/assets/avatar.png';
-import { removeStorage } from '@/utils/storage';
-import { setSignOut } from '@/store/modules/user';
-import { useAppDispatch } from '@/store/hooks';
+import type { MenuProps } from 'antd'
+import { Dropdown, Image } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { getAccountStyle } from './style'
+import avatar from '@/assets/avatar.png'
+import { removeStorage } from '@/utils/storage'
+import { setSignOut } from '@/store/modules/user'
+import { useAppDispatch } from '@/store/hooks'
 
 const AppAccount = () => {
-  const { AccountDiv } = getAccountStyle();
+  const { AccountDiv } = getAccountStyle()
 
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const items: MenuProps['items'] = [
     {
       key: '1',
       label: '退出登录',
     },
-  ];
+  ]
 
-  const memuChange: MenuProps['onClick'] = (_e) => {
-    removeStorage('userInfo');
-    dispatch(setSignOut());
+  const memuChange: MenuProps['onClick'] = _e => {
+    removeStorage('userInfo')
+    dispatch(setSignOut())
 
-    navigate('/login');
-  };
+    navigate('/login')
+  }
 
   return (
     <AccountDiv className="cursor">
@@ -41,7 +41,7 @@ const AppAccount = () => {
         <Image src={avatar} className="wave" preview={false} />
       </Dropdown>
     </AccountDiv>
-  );
-};
+  )
+}
 
-export default AppAccount;
+export default AppAccount

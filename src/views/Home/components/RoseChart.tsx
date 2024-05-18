@@ -1,7 +1,7 @@
-import { memo } from 'react';
-import type { PieConfig } from '@ant-design/charts';
-import { Pie } from '@ant-design/charts';
-import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
+import { memo } from 'react'
+import type { PieConfig } from '@ant-design/charts'
+import { Pie } from '@ant-design/charts'
+import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig'
 
 const data = [
   {
@@ -16,10 +16,10 @@ const data = [
     type: 'Angular',
     value: 10,
   },
-];
+]
 
 const RoseChart = memo(() => {
-  const { theme } = useChartsConfig();
+  const { theme } = useChartsConfig()
 
   // 分组玫瑰图
   const config: PieConfig = {
@@ -53,9 +53,9 @@ const RoseChart = memo(() => {
       title: {
         customHtml: (_container, _view, datum, _data) => {
           if (datum) {
-            return datum.type;
+            return datum.type
           }
-          return '卷';
+          return '卷'
         },
       },
       // content: {
@@ -80,9 +80,9 @@ const RoseChart = memo(() => {
         type: 'pie-statistic-active',
       },
     ],
-  };
+  }
 
-  return <Pie {...config} />;
-});
+  return <Pie {...config} />
+})
 
-export default RoseChart;
+export default RoseChart

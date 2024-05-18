@@ -2,8 +2,8 @@
  * svg
  * https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
  */
-import path from 'path';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import path from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export function configSvgPlugin() {
   const svgPlugin = createSvgIconsPlugin({
@@ -13,6 +13,6 @@ export function configSvgPlugin() {
     // svgoOptions: false,
     // 指定symbolId格式
     symbolId: 'icon-[dir]-[name]',
-  });
-  return svgPlugin;
+  })
+  return svgPlugin
 }

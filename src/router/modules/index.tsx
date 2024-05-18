@@ -1,24 +1,19 @@
-import {
-  AppstoreOutlined,
-  DatabaseOutlined,
-  HomeOutlined,
-  UserSwitchOutlined,
-} from '@ant-design/icons';
-import { lazy } from 'react';
-import type { RouteList } from '@/router/route';
-import { FormattedMessage } from '@/locales';
-import Layout from '@/layout';
-import Authority from '@/layout/Authority';
+import { AppstoreOutlined, DatabaseOutlined, HomeOutlined, UserSwitchOutlined } from '@ant-design/icons'
+import { lazy } from 'react'
+import type { RouteList } from '@/router/route'
+import { FormattedMessage } from '@/locales'
+import Layout from '@/layout'
+import Authority from '@/layout/Authority'
 
-const Home = lazy(() => import('@/views/Home'));
-const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
-const Menu1_2 = lazy(() => import('@/views/Nested/Menu1/Menu1-2'));
-const Permissions = lazy(() => import('@/views/Power/Permissions'));
-const TestPermissionsA = lazy(() => import('@/views/Power/test-permissions-a'));
-const TestPermissionsB = lazy(() => import('@/views/Power/test-permissions-b'));
-const DetailsPage = lazy(() => import('@/views/DetailsPage'));
-const DetailsInfo = lazy(() => import('@/views/DetailsPage/DetailsInfo'));
-const DetailsParams = lazy(() => import('@/views/DetailsPage/DetailsParams'));
+const Home = lazy(() => import('@/views/Home'))
+const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'))
+const Menu1_2 = lazy(() => import('@/views/Nested/Menu1/Menu1-2'))
+const Permissions = lazy(() => import('@/views/Power/Permissions'))
+const TestPermissionsA = lazy(() => import('@/views/Power/test-permissions-a'))
+const TestPermissionsB = lazy(() => import('@/views/Power/test-permissions-b'))
+const DetailsPage = lazy(() => import('@/views/DetailsPage'))
+const DetailsInfo = lazy(() => import('@/views/DetailsPage/DetailsInfo'))
+const DetailsParams = lazy(() => import('@/views/DetailsPage/DetailsParams'))
 
 export const defaultRoute: RouteList[] = [
   {
@@ -113,13 +108,13 @@ export const defaultRoute: RouteList[] = [
       },
     ],
   },
-];
+]
 
-const ErrorPage403 = lazy(() => import('@/views/core/error/403'));
-const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
-const Refresh = lazy(() => import('@/views/core/Refresh'));
+const ErrorPage403 = lazy(() => import('@/views/core/error/403'))
+const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'))
+const Refresh = lazy(() => import('@/views/core/Refresh'))
 
-const Login = lazy(() => import('@/views/Login'));
+const Login = lazy(() => import('@/views/Login'))
 
 export const whiteList: RouteList[] = [
   {
@@ -131,7 +126,7 @@ export const whiteList: RouteList[] = [
     element: <Refresh />,
     handle: { label: '', hideSidebar: true, whiteList: true },
   },
-];
+]
 
 export const baseRouter: RouteList[] = [
   {
@@ -148,4 +143,4 @@ export const baseRouter: RouteList[] = [
     path: '/login',
     element: <Login />,
   },
-];
+]

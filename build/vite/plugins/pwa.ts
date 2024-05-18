@@ -2,7 +2,7 @@
  * pwa
  * https://vite-plugin-pwa.netlify.app
  */
-import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa'
 
 export function configPwaPlugin() {
   const options = {
@@ -32,7 +32,7 @@ export function configPwaPlugin() {
         },
       ],
     },
-  };
+  }
 
-  return VitePWA(options);
+  return VitePWA(options)
 }

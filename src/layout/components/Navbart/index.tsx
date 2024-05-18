@@ -1,31 +1,31 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, theme } from 'antd';
-import './index.less';
-import { memo } from 'react';
-import { useResponsive } from 'ahooks';
-import { shallowEqual } from 'react-redux';
-import Setting from '../Setting';
-import NavSidebar from '../Sidebar/NavSidebar';
-import AppLogo from '../AppLogo';
-import AppAccount from '../AppAccount';
-import AppLocale from '@/components/AppLocale';
-import AppTheme from '@/components/AppTheme';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppCollapsed } from '@/store/modules/app';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Layout, theme } from 'antd'
+import './index.less'
+import { memo } from 'react'
+import { useResponsive } from 'ahooks'
+import { shallowEqual } from 'react-redux'
+import Setting from '../Setting'
+import NavSidebar from '../Sidebar/NavSidebar'
+import AppLogo from '../AppLogo'
+import AppAccount from '../AppAccount'
+import AppLocale from '@/components/AppLocale'
+import AppTheme from '@/components/AppTheme'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { setAppCollapsed } from '@/store/modules/app'
 
-const { Header } = Layout;
+const { Header } = Layout
 
 const Navbart = memo(() => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const { collapsed, sidebarMode } = useAppSelector(
-    (state) => ({
+    state => ({
       collapsed: state.app.collapsed,
       sidebarMode: state.app.sidebarMode,
     }),
     shallowEqual,
-  );
-  const thme = theme.useToken();
-  const responsive = useResponsive();
+  )
+  const thme = theme.useToken()
+  const responsive = useResponsive()
 
   const render = () => {
     return (
@@ -44,7 +44,7 @@ const Navbart = memo(() => {
                 <div
                   className="layout-header-collapsed"
                   onClick={() => {
-                    dispatch(setAppCollapsed(!collapsed));
+                    dispatch(setAppCollapsed(!collapsed))
                   }}
                 >
                   {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -65,10 +65,10 @@ const Navbart = memo(() => {
           </div>
         </div>
       </Header>
-    );
-  };
+    )
+  }
 
-  return render();
-});
+  return render()
+})
 
-export default Navbart;
+export default Navbart
